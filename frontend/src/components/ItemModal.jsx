@@ -5,7 +5,7 @@ import axios from "axios";
 const ItemModal = ({ item, onHide }) => {
   const handleEnquire = async () => {
     try {
-      await axios.post("http://localhost:5000/api/enquire", {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/enquire`, {
         itemId: item._id,
       });
       alert("✅ Enquiry email sent!");

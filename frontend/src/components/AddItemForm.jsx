@@ -53,7 +53,7 @@ const AddItemForm = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/items", itemData);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/items`, itemData);
       alert("✅ Item successfully added!");
       setForm({
         itemName: "",
