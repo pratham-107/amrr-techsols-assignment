@@ -84,3 +84,53 @@ amrr-techsols-assignment/
 ├── .gitignore
 ├── README.md
 
+
+📬 Enquiry Email
+When a user clicks on "Enquire", the app sends a POST request to the backend:
+
+Backend endpoint: POST /api/enquire
+
+Email is sent using Nodemailer with Gmail SMTP
+
+Includes item name in the email content
+
+Recipient email is set in .env as TO_EMAIL
+
+✅ Environment Protection
+.env file is ignored via .gitignore
+
+.env.example is shared for reference
+
+No sensitive information is committed
+
+
+✨ Live Demo
+(Add these links if deployed)
+🔗 Frontend (Vercel): https://amrr-techsols-assignment.vercel.app/
+🔗 Backend API (Render): https://amrr-backend.onrender.com
+
+👨‍💻 Developer Info
+Pratham Singh
+React.js | MERN Stack Developer
+📧 spratham845@gmail.com
+🔗 GitHub: https://github.com/pratham-107
+
+
+---
+
+### ✅ After Copying:
+
+1. Paste it into `README.md` in your root directory
+2. Replace:
+   - GitHub repo URL
+   - Your deployment links (if live)
+   - Your Mongo URI placeholders
+3. Commit & push:
+
+```bash
+git add README.md
+git commit -m "Add final full README for internship assignment"
+git push
+
+
+
