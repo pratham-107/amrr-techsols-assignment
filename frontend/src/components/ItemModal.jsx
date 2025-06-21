@@ -1,4 +1,3 @@
-// frontend/src/components/ItemModal.jsx
 import React from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 import axios from "axios";
@@ -15,8 +14,6 @@ const ItemModal = ({ item, onHide }) => {
       alert("❌ Failed to send enquiry email.");
     }
   };
-
-  const fallbackImage = "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
 
   return (
     <Modal show onHide={onHide} size="lg" centered>
@@ -35,7 +32,16 @@ const ItemModal = ({ item, onHide }) => {
                   className="d-block w-100 rounded"
                   style={{ maxHeight: "400px", objectFit: "cover" }}
                   alt={`Slide ${idx + 1}`}
-                  onError={(e) => (e.target.src = fallbackImage)}
+                  onError={(e) => {
+                    if (
+                      e.target.src !==
+                      "https://cdn-icons-png.flaticon.com/512/2748/2748558.png"
+                    ) {
+                      e.target.onerror = null;
+                      e.target.src =
+                        "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
+                    }
+                  }}
                 />
               </Carousel.Item>
             ))}

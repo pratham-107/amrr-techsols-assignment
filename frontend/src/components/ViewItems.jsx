@@ -1,4 +1,3 @@
-// frontend/src/components/ViewItems.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ItemModal from "./ItemModal";
@@ -13,9 +12,6 @@ const ViewItems = () => {
       .then((res) => setItems(res.data))
       .catch((err) => console.error("Error fetching items:", err));
   }, []);
-
-  const fallbackImage =
-    "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
 
   return (
     <div className="container py-4">
@@ -40,7 +36,11 @@ const ViewItems = () => {
                 className="card-img-top"
                 alt={item.itemName}
                 style={{ objectFit: "cover", height: "200px" }}
-                onError={(e) => (e.target.src = fallbackImage)}
+                onError={(e) => {
+                  if (e.target.src !== "https://cdn-icons-png.flaticon.com/512/2748/2748558.png") {
+                    e.target.src = "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
+                  }
+                }}
               />
 
               <div className="card-body">

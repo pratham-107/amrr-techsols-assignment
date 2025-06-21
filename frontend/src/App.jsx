@@ -12,7 +12,7 @@ const App = () => {
           Item Manager
         </Link>
         <div className="navbar-nav">
-          <Link className="nav-link" to="/add">
+          <Link className="nav-link" to="/">
             Add Item
           </Link>
           <Link className="nav-link" to="/view">
