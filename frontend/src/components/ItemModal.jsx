@@ -16,6 +16,8 @@ const ItemModal = ({ item, onHide }) => {
     }
   };
 
+  const fallbackImage = "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
+
   return (
     <Modal show onHide={onHide} size="lg" centered>
       <Modal.Header closeButton className="bg-primary text-white">
@@ -33,10 +35,7 @@ const ItemModal = ({ item, onHide }) => {
                   className="d-block w-100 rounded"
                   style={{ maxHeight: "400px", objectFit: "cover" }}
                   alt={`Slide ${idx + 1}`}
-                  onError={(e) =>
-                    (e.target.src =
-                      "https://via.placeholder.com/600x400?text=Image+Not+Found")
-                  }
+                  onError={(e) => (e.target.src = fallbackImage)}
                 />
               </Carousel.Item>
             ))}

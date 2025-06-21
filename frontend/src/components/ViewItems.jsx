@@ -14,6 +14,9 @@ const ViewItems = () => {
       .catch((err) => console.error("Error fetching items:", err));
   }, []);
 
+  const fallbackImage =
+    "https://cdn-icons-png.flaticon.com/512/2748/2748558.png";
+
   return (
     <div className="container py-4">
       <h2 className="text-center mb-4 fw-bold text-primary">View All Items</h2>
@@ -37,10 +40,7 @@ const ViewItems = () => {
                 className="card-img-top"
                 alt={item.itemName}
                 style={{ objectFit: "cover", height: "200px" }}
-                onError={(e) =>
-                  (e.target.src =
-                    "https://via.placeholder.com/300x200?text=No+Image")
-                }
+                onError={(e) => (e.target.src = fallbackImage)}
               />
 
               <div className="card-body">

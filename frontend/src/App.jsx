@@ -23,7 +23,7 @@ const App = () => {
 
       <div className="container mt-4">
         <Routes>
-          <Route path="/add" element={<AddItemForm />} />
+          <Route path="/" element={<AddItemForm />} />
           <Route path="/view" element={<ViewItems />} />
         </Routes>
       </div>

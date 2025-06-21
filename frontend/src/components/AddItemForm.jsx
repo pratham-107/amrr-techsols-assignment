@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// ✅ URL validation function
+// ✅ URL validation helper
 const isValidUrl = (string) => {
   try {
     new URL(string);
@@ -29,21 +29,21 @@ const AddItemForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Validate cover image URL
+    // ✅ Validate cover image
     if (!isValidUrl(form.coverImage)) {
       alert("❌ Invalid Cover Image URL");
       return;
     }
 
-    // ✅ Validate additional images
+    // ✅ Validate and clean image array
     const imageUrls = form.images
       .split(",")
       .map((url) => url.trim())
-      .filter(Boolean); // remove empty strings
+      .filter(Boolean);
 
     const invalidUrls = imageUrls.filter((url) => !isValidUrl(url));
     if (invalidUrls.length > 0) {
-      alert("❌ One or more Additional Image URLs are invalid");
+      alert("❌ One or more additional image URLs are invalid");
       return;
     }
 
@@ -62,73 +62,71 @@ const AddItemForm = () => {
         coverImage: "",
         images: "",
       });
-    } catch (error) {
-      console.error(error);
-      alert("❌ Failed to add item. Please try again.");
+    } catch (err) {
+      console.error(err);
+      alert("❌ Failed to add item");
     }
   };
 
   return (
     <div className="container">
-      <div className="card shadow-lg p-4 mx-auto mt-4" style={{ maxWidth: "700px" }}>
+      <div
+        className="card shadow-lg p-4 mx-auto mt-4"
+        style={{ maxWidth: "700px" }}
+      >
         <h3 className="text-center mb-4 text-primary fw-bold">
           ➕ Add a New Item
         </h3>
         <form onSubmit={handleSubmit}>
-          {/* Item Name */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Item Name</label>
             <input
               name="itemName"
               className="form-control"
-              placeholder="e.g. Nike Running Shoes"
+              placeholder="e.g. Adidas Backpack"
               value={form.itemName}
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* Item Type */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Item Type</label>
             <input
               name="itemType"
               className="form-control"
-              placeholder="e.g. Shoes, Shirt, Watch"
+              placeholder="e.g. Bag, Shoes"
               value={form.itemType}
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* Description */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Description</label>
             <textarea
               name="description"
               className="form-control"
               rows={3}
-              placeholder="Enter item details..."
+              placeholder="Enter item description..."
               value={form.description}
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* Cover Image */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Cover Image URL</label>
             <input
               name="coverImage"
               className="form-control"
-              placeholder="Direct link to cover image"
+              placeholder="Direct image link"
               value={form.coverImage}
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* Additional Images */}
           <div className="mb-3">
             <label className="form-label fw-semibold">
               Additional Images (comma-separated URLs)
@@ -136,14 +134,13 @@ const AddItemForm = () => {
             <input
               name="images"
               className="form-control"
-              placeholder="URL1, URL2, URL3"
+              placeholder="http://..., http://..."
               value={form.images}
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* Submit Button */}
           <div className="d-grid">
             <button className="btn btn-success fw-semibold" type="submit">
               ➕ Add Item
